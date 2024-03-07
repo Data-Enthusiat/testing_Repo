@@ -271,25 +271,25 @@ def main():
             st.warning("Please upload both Resume and Job Description before using ATS")
 
     if choice == "FeedBack Page":
-    st.title('Feedback')
-    # Get user input
-    recipient_email = st.text_input("Recipient Email:")
-    subject = st.text_input("Subject:")
-    # Get missing skills from session state
-    missing_skills = st.session_state.missing_skills or []  # Default to an empty list if missing_skills is None
+        st.title('Feedback')
+        # Get user input
+        recipient_email = st.text_input("Recipient Email:")
+        subject = st.text_input("Subject:")
+        # Get missing skills from session state
+        missing_skills = st.session_state.missing_skills or []  # Default to an empty list if missing_skills is None
 
-    # Automatically populate the message block with missing skills
-    message = st.text_area("Message:", value=", ".join(map(str, missing_skills)))
-    # Button to send email
-    if st.button("Send Email"):
-        if not recipient_email or not subject or not message:
+        # Automatically populate the message block with missing skills
+        message = st.text_area("Message:", value=", ".join(map(str, missing_skills)))
+        # Button to send email
+        if st.button("Send Email"):
+            if not recipient_email or not subject or not message:
                 st.warning("Please fill in all the fields.")
-        else:
-            try:
-                Base_ATS.send_email(subject, message, recipient_email)
-                st.success(f"Email sent successfully to {recipient_email}")
-            except Exception as e:
-                st.error(f"An error occurred: {e}")
+            else:
+                try:
+                    Base_ATS.send_email(subject, message, recipient_email)
+                    st.success(f"Email sent successfully to {recipient_email}")
+                except Exception as e:
+                    st.error(f"An error occurred: {e}")
 
     if choice=="About Us":
         st.title("Meet Our Team")
