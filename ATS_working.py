@@ -254,6 +254,9 @@ def main():
             else:
                 st.write(f"<h5><b><span style='color: #fd971f;'>{os.path.basename(resume_name)} is Not Recommended for {os.path.basename(jd_name)}</span></b></h5>", unsafe_allow_html=True)
                 st.write(f"<h5><b><span style='color: #fd971f;'>Score: {score}</span></b></h5>", unsafe_allow_html=True)
+
+                if 'clicked_feedback_button' not in st.session_state:
+                    st.session_state.clicked_feedback_button = False
                 
                 if missing_skills is not None and missing_skills:
                     st.subheader('Missing Skills')
@@ -270,7 +273,7 @@ def main():
         elif not st.session_state.processed_resume or not st.session_state.processed_job_description:
             st.warning("Please upload both Resume and Job Description before using ATS")
 
-    if choice == "FeedBack Page":
+    if choice == "FeedBack Page" or st.session_state.clicked_feedback_button:
         st.title('Feedback')
         # Get user input
         recipient_email = st.text_input("Recipient Email:")
@@ -279,7 +282,7 @@ def main():
         missing_skills = st.session_state.missing_skills or []  # Default to an empty list if missing_skills is None
 
         # Automatically populate the message block with missing skills
-        message = st.text_area("Message:", value=", ".join(map(str, missing_skills)))
+        message = st.text_area("Message:", value=missing_skills))
         # Button to send email
         if st.button("Send Email"):
             if not recipient_email or not subject or not message:
