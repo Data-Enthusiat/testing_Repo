@@ -58,7 +58,7 @@ def main():
             data = f.read()
         return base64.b64encode(data).decode()
 
-img = get_img_as_base64("Background.jpg")
+    img = get_img_as_base64("Background.jpg")
 
     page_bg_img = f"""
     <style>
