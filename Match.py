@@ -19,8 +19,8 @@ class Matching:
         resume_skills = resume_entities.get("SKILL", [])
         job_description_skills = job_description_entities.get("SKILL", [])
 
+        # Find skills not in resume
         skills_not_in_resume = jd.find_not_in_resume(resume_skills, job_description_skills)
-        missing_skills = ", ".join(skills_not_in_resume)
         
         # Creating a vectorizer
         vectorizer = TfidfVectorizer()
@@ -31,6 +31,7 @@ class Matching:
         similarity = cosine_similarity(X[0], X[1])
         score = round(similarity[0][0] * 100, 2)
         
+        # Create dictionary of missing skills
         missing_skill = dict(enumerate(skills_not_in_resume))
         
         return score, missing_skill
