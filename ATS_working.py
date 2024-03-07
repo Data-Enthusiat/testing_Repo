@@ -27,6 +27,10 @@ from PIL import Image
 image_path = "ATS_logo.jpg"
 st.set_page_config(page_icon=image_path)
 
+# Displaying Applicant Missing Skill on FeedBack Page
+if 'clicked_feedback_button' not in st.session_state:
+    st.session_state.clicked_feedback_button = False
+    
 def display_team_member(name, github_url, linkedin_url):
     # Center-align the content
     st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
@@ -271,7 +275,14 @@ def main():
         # Get user input
         recipient_email = st.text_input("Recipient Email:")
         subject = st.text_input("Subject:")
-        message = st.text_area("Message:")
+        # Get missing skills from session state
+        missing_skills = st.session_state.missing_skills if "missing_skills" in st.session_state else []
+        missing_skills = [str(skill) for skill in missing_skills]
+
+        # Automatically populate the message block with missing skills
+        message = st.text_area("Message:", value=", ".join(missing_skills))
+    
+   
         # Button to send email
         if st.button("Send Email"):
             if not recipient_email or not subject or not message:
@@ -328,7 +339,5 @@ def main():
         display_team_member("Shravani Mahadeshwar", "https://github.com/Shravani018","https://www.linkedin.com/in/shravani-mahadeshwar/")
 
     
-
-
 if __name__ == "__main__":
     main()
