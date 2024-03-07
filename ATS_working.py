@@ -282,7 +282,7 @@ def main():
         missing_skills = st.session_state.missing_skills or []  # Default to an empty list if missing_skills is None
 
         # Automatically populate the message block with missing skills
-        message = st.text_area("Message:", value=missing_skills))
+        message = st.text_area("Message:", value=missing_skills)
         # Button to send email
         if st.button("Send Email"):
             if not recipient_email or not subject or not message:
