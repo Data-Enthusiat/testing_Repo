@@ -22,34 +22,6 @@ Job_Des = Job_Description()
 Scoring = Matching()
 
 from PIL import Image
-
-def circular_image(image_path, size=200):
-
-    
-    try:
-        # Open the image
-        image = Image.open(image_path)
-        
-        # Resize the image to the desired size
-        image = image.resize((size, size))
-
-        # Apply custom CSS for circular shape
-        st.markdown(
-            f'<style>img {{border-radius: {size}px; overflow: hidden; box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); justify-content: center}}</style>',
-            unsafe_allow_html=True
-        )
-
-        # Display the image
-        st.image(
-            image,
-            caption="ATS Logo",
-            use_column_width=True,
-            output_format="auto",
-        )
-    except Exception as e:
-        st.error(f"Error displaying image: {e}")
-
-
 def main():
 
     @st.cache_data
@@ -84,7 +56,7 @@ def main():
 
     # Display circular image with reduced size
     image_path = "ATS_logo.jpg"
-    logo = circular_image(image_path, size=200) 
+    
     
 
     # Get the absolute path of the currently executing Python script in Streamlit
@@ -94,7 +66,7 @@ def main():
     json_path = folder_path+"/JSON"
 
     
-    st.sidebar.image(logo,width=250)
+    st.sidebar.image(image_path,width=250)
     with st.sidebar:
         choice = option_menu("Main Menu", ["Home", "ATS Matcher", "FeedBack Page","About Us" ], 
             icons=['house', 'cloud-upload', 'gear', 'people'], menu_icon="list", default_index=0)
