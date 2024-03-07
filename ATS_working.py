@@ -265,9 +265,8 @@ def main():
                     st.session_state.show_go_to_feedback_button = True
 
                 if "show_go_to_feedback_button" in st.session_state and st.session_state.show_go_to_feedback_button:
-                    if st.button("Feedback"):
+                    
                         st.session_state.choice = "FeedBack Page"
-                        st.session_state.clicked_feedback_button = True
                         st.experimental_rerun()
 
         elif not st.session_state.processed_resume or not st.session_state.processed_job_description:
