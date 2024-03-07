@@ -23,6 +23,8 @@ Scoring = Matching()
 
 from PIL import Image
 
+# Display circular image with reduced size
+image_path = "ATS_logo.jpg"
 st.set_page_config(page_icon=image_path)
 
 def display_team_member(name, github_url, linkedin_url):
@@ -72,10 +74,7 @@ def main():
     """
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
-    # Display circular image with reduced size
-    image_path = "ATS_logo.jpg"
-    
-    
+ 
 
     # Get the absolute path of the currently executing Python script in Streamlit
     script_path = os.path.realpath(__file__)
