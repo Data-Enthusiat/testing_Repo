@@ -58,8 +58,7 @@ def main():
             data = f.read()
         return base64.b64encode(data).decode()
 
-    img = get_img_as_base64("black.png")
-    #img = get_img_as_base64("Background1.jpg")
+   img = get_img_as_base64("Background.jpg")
 
     page_bg_img = f"""
     <style>
@@ -84,9 +83,9 @@ def main():
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
     # Display circular image with reduced size
-    #image_path = "D:\\Designing\\Final_ATS\OurLogo.png"
-    #image_path = "OurLogo.png"
-    #circular_image(image_path, size=200)  # Adjust the size as needed
+    image_path = "ATS_logo.jpg"
+    logo = circular_image(image_path, size=200) 
+    
 
     # Get the absolute path of the currently executing Python script in Streamlit
     script_path = os.path.realpath(__file__)
@@ -94,8 +93,8 @@ def main():
     folder_path = os.path.dirname(script_path)
     json_path = folder_path+"/JSON"
 
-    st.sidebar.image("black.png",width=250)
-
+    
+    st.sidebar.image(logo,width=250)
     with st.sidebar:
         choice = option_menu("Main Menu", ["Home", "ATS Matcher", "FeedBack Page","About Us" ], 
             icons=['house', 'cloud-upload', 'gear', 'people'], menu_icon="list", default_index=0)
@@ -124,9 +123,8 @@ def main():
         ##Video path
         
         st.caption("The right match for your resource needs. Watch the below video!!!") 
-        #video_path = "HomePage_Video.mp4"
-        # video_path = "D:\Designing\Final_ATS\HomePage_Video.mp4"
-        # st.video(video_path)
+        video_path = "HomePage_Video.mp4"
+        st.video(video_path)
         
 
 
@@ -266,6 +264,7 @@ def main():
                 if missing_skills:
                     st.subheader('Missing Skills')
                     st.write(missing_skills)
+                    
         elif not st.session_state.processed_resume or not st.session_state.processed_job_description:
             st.warning("Please upload both Resume and Job Description before using ATS")
     if choice=="FeedBack Page":
@@ -286,9 +285,50 @@ def main():
                     st.error(f"An error occurred: {e}")
 
     if choice=="About Us":
-        st.title('About Us')
-        st.text('An NLP Project by ')
-        st.text('Meet Our Team')
+        st.title("Meet Our Team")
+        video_path1 = "Credits.mp4"
+        st.video(video_path1)
+        
+        st.subheader("Team Members")
+        display_team_member("AbdulKadar Kapasi", "https://github.com/Abdulkadarkapasi/Abdulkadarkapasi","https://www.linkedin.com/in/abdulkadar-kapasi/")
+    
+
+        display_team_member("Aditya Verma", "https://github.com/adityaverma11","https://www.linkedin.com/in/aditya-verma-735784220/")
+
+    
+        display_team_member("Atharva Hirlekar", "https://github.com/AtharvaHirlekar/", "https://www.linkedin.com/in/atharvahirlekar/")
+
+    
+        display_team_member("Arif Khan", "https://github.com/Arif-khan27/Arif-khan27","https://www.linkedin.com/in/arifkhan5467/")
+
+    
+        display_team_member("Arin Purohit", "https://github.com/arinp10","https://www.linkedin.com/in/arin-purohit/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app")
+
+    
+        display_team_member("Arsh Vohra", "https://github.com/arshvohra29","https://www.linkedin.com/in/arsh-vohra-76b214221/")
+
+    
+        display_team_member("Cwen Fernandes", "https://github.com/Rayonushi","https://www.linkedin.com/in/cwenfernandes/")
+
+    
+        display_team_member("Saloni Shinde", "https://github.com/saloniish","https://www.linkedin.com/in/salonishinde20/")
+
+    
+        display_team_member("Piyush Mishra", "https://github.com/Meeshra","https://www.linkedin.com/in/piyush-mishra-01593b21a/")
+
+    
+        display_team_member("Reeya Wadekar", "https://github.com/reeyaaa","https://www.linkedin.com/in/reeyawadekar/")
+
+    
+        display_team_member("Reyhan Pereira", "https://github.com/reyhanpereira2608","https://www.linkedin.com/in/reyhanpereira2608/")
+
+    
+        display_team_member("Riya Shukla", "https://github.com/riyashukla24","https://www.linkedin.com/in/riya-shukla-880b20235/")
+
+    
+        display_team_member("Shravani Mahadeshwar", "https://github.com/Shravani018","https://www.linkedin.com/in/shravani-mahadeshwar/")
+
+    
 
 
 if __name__ == "__main__":
