@@ -250,12 +250,22 @@ def main():
             else:
                 st.write(f"<h5><b><span style='color: #fd971f;'>{os.path.basename(resume_name)} is Not Recommended for {os.path.basename(jd_name)}</span></b></h5>", unsafe_allow_html=True)
                 st.write(f"<h5><b><span style='color: #fd971f;'>Score: {score}</span></b></h5>", unsafe_allow_html=True)
+                
                 if missing_skills:
                     st.subheader('Missing Skills')
                     st.write(missing_skills)
+                    st.session_state.missing_skills = [str(skill) for skill in missing_skills]
+                    st.session_state.show_go_to_feedback_button = True
+
+        if "show_go_to_feedback_button" in st.session_state and st.session_state.show_go_to_feedback_button:
+            if st.button("Feedback"):
+                st.session_state.choice = "Feedback Page"
+                st.session_state.clicked_feedback_button = True
+                st.experimental_rerun()
                     
         elif not st.session_state.processed_resume or not st.session_state.processed_job_description:
             st.warning("Please upload both Resume and Job Description before using ATS")
+            
     if choice=="FeedBack Page":
         st.title('Feedback')
         # Get user input
