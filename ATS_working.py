@@ -25,7 +25,7 @@ from PIL import Image
 
 # Display circular image with reduced size
 image_path = "ATS_logo.jpg"
-st.set_page_config(page_icon=image_path)
+st.set_page_config(page_icon=image_path, page_title="Applicant Tracking System")
 
 # Displaying Applicant Missing Skill on FeedBack Page
 if 'clicked_feedback_button' not in st.session_state:
