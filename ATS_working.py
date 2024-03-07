@@ -22,6 +22,24 @@ Job_Des = Job_Description()
 Scoring = Matching()
 
 from PIL import Image
+
+st.set_page_config(page_icon=image_path)
+
+def display_team_member(name, github_url, linkedin_url):
+    # Center-align the content
+    st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+    
+    st.write(f"<p style='font-weight: bold; font-size: larger; margin-bottom: 0;'>{name}</p>", unsafe_allow_html=True)
+    
+    # Display GitHub link with logo
+    st.markdown(f'<div style="display: flex; justify-content: center;"><a href="{github_url}"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/github.svg" alt="GitHub" width="20"></a><a href="{github_url}" style="margin-left: 5px;">GitHub</a></div>', unsafe_allow_html=True)
+    
+    # Display LinkedIn link with logo
+    st.markdown(f'<div style="display: flex; justify-content: center;"><a href="{linkedin_url}"><img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="20"></a><a href="{linkedin_url}" style="margin-left: 5px;">LinkedIn</a></div>', unsafe_allow_html=True)
+    
+    # Close the center-align div
+    st.markdown("</div>", unsafe_allow_html=True)
+
 def main():
 
     @st.cache_data
