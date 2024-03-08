@@ -191,7 +191,7 @@ def main():
             st.subheader('Common Words between Resume and Job Description')
             common = Base_ATS.find_common_words_dict(cleaned_resume,cleaned_jd)  
             st.write(common)
-            # skill_pattern="D:\\Designing\\experimento\\jz_skill_patterns.jsonl"
+            
             skill_pattern="jz_skill_patterns.jsonl"
             ner=spacy.load('en_core_web_lg')
             entity_ruler=ner.add_pipe("entity_ruler")
@@ -267,7 +267,8 @@ def main():
                     st.write(missing_skills)
                     st.session_state.missing_skills = missing_skills
                     st.session_state.show_go_to_feedback_button = True
-                else st.session_state.missing_skills = []
+                else:
+                    st.session_state.missing_skills = []
 
                 if "show_go_to_feedback_button" in st.session_state and st.session_state.show_go_to_feedback_button:
                     st.session_state.choice = "Feedback Page"
