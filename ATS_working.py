@@ -276,7 +276,7 @@ def main():
         elif not st.session_state.processed_resume or not st.session_state.processed_job_description:
             st.warning("Please upload both Resume and Job Description before using ATS")
 
-  if choice == "FeedBack Page":
+if choice == "FeedBack Page":
         st.title('Feedback')
         # Get user input
         recipient_email = st.text_input("Recipient Email:")
@@ -298,7 +298,8 @@ def main():
                 except Exception as e:
                     st.error(f"An error occurred: {e}")
 
-    if choice=="About Us":
+
+if choice=="About Us":
         st.title("Meet Our Team")
         video_path1 = "Credits.mp4"
         st.video(video_path1)
