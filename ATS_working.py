@@ -285,7 +285,7 @@ def main():
         missing_skills = st.session_state.missing_skills  # No need for default value here
 
         # Automatically populate the message block with missing skills
-        message = st.text_area("Message:", value=", ".join(map(str, missing_skills)))
+        message = st.text_area("Message:", value=missing_skills))
 
         # Button to send email
         if st.button("Send Email"):
