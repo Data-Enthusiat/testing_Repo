@@ -255,28 +255,10 @@ def main():
                 st.write(f"<h5><b><span style='color: #fd971f;'>{os.path.basename(resume_name)} is Not Recommended for {os.path.basename(jd_name)}</span></b></h5>", unsafe_allow_html=True)
                 st.write(f"<h5><b><span style='color: #fd971f;'>Score: {score}</span></b></h5>", unsafe_allow_html=True)
 
-                 
+                if missing_skills:
+                    st.subheader('Missing Skills')
+                    st.write(missing_skills)
 
-                    # if 'clicked_feedback_button' not in st.session_state:
-                    #     st.session_state.clicked_feedback_button = False
-        
-                    # # Ensure missing_skills is present in st.session_state and set a default value
-                    # if "missing_skills" not in st.session_state:
-                    #     st.session_state.missing_skills = []
-        
-                    # if missing_skills is not None:
-                    #     st.subheader('Missing Skills')
-                    #     st.write(missing_skills)
-                    #     st.session_state.missing_skills = missing_skills
-                    #     st.session_state.show_go_to_feedback_button = True
-                    # else:
-                    #     st.session_state.missing_skills = []
-                    
-                    # if "show_go_to_feedback_button" in st.session_state and st.session_state.show_go_to_feedback_button:
-                    #     st.session_state.choice = "Feedback Page"
-                    #     st.session_state.clicked_feedback_button = True
-                    #     st.experimental_rerun()
-            
             elif not st.session_state.processed_resume or not st.session_state.processed_job_description:
                 st.warning("Please upload both Resume and Job Description before using ATS")
 
@@ -285,12 +267,8 @@ def main():
         # Get user input
         recipient_email = st.text_input("Recipient Email:")
         subject = st.text_input("Subject:")
-        # Get missing skills from session state
-        #missing_skills = st.session_state.missing_skills  # No need for default value here
-
-        # Automatically populate the message block with missing skills
+        ## Write an appropriate message to the user
         message = st.text_area("Message:")
-
 
         # Button to send email
         if st.button("Send Email"):
