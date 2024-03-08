@@ -262,11 +262,12 @@ def main():
                 if "missing_skills" not in st.session_state:
                     st.session_state.missing_skills = []
 
-                if missing_skills is not None and missing_skills:
+                if missing_skills is not None:
                     st.subheader('Missing Skills')
                     st.write(missing_skills)
                     st.session_state.missing_skills = missing_skills
                     st.session_state.show_go_to_feedback_button = True
+                else st.session_state.missing_skills = []
 
                 if "show_go_to_feedback_button" in st.session_state and st.session_state.show_go_to_feedback_button:
                     st.session_state.choice = "Feedback Page"
