@@ -279,7 +279,7 @@ def main():
         recipient_email = st.text_input("Recipient Email:")
         subject = st.text_input("Subject:")
         # Get missing skills from session state
-        missing_skills = st.session_state.missing_skills or []  # Default to an empty list if missing_skills is None
+        missing_skills = st.session_state.missing_skills or [] # Default to an empty list if missing_skills is None
 
         # Automatically populate the message block with missing skills
         message = st.text_area("Message:", value=missing_skills)
