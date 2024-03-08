@@ -275,8 +275,9 @@ def main():
                     st.session_state.clicked_feedback_button = True
                     st.experimental_rerun()
 
-        elif not st.session_state.processed_resume or not st.session_state.processed_job_description:
-            st.warning("Please upload both Resume and Job Description before using ATS")
+                elif not st.session_state.processed_resume or not st.session_state.processed_job_description:
+                    st.warning("Please upload both Resume and Job Description before using ATS")
+                       
 
     if choice == "FeedBack Page":
         st.title('Feedback')
@@ -287,7 +288,7 @@ def main():
         missing_skills = st.session_state.missing_skills  # No need for default value here
 
         # Automatically populate the message block with missing skills
-        message = st.text_area("Message:", value=missing_skills)
+        message = st.text_area("Message:", value=", ".join(missing_skills) if missing_skills else "")
 
         # Button to send email
         if st.button("Send Email"):
