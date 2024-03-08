@@ -257,33 +257,28 @@ def main():
 
                  
 
-                if 'clicked_feedback_button' not in st.session_state:
-                    st.session_state.clicked_feedback_button = False
+            if 'clicked_feedback_button' not in st.session_state:
+                st.session_state.clicked_feedback_button = False
 
-                # Ensure missing_skills is present in st.session_state and set a default value
-                if "missing_skills" not in st.session_state:
-                    st.session_state.missing_skills = []
+            # Ensure missing_skills is present in st.session_state and set a default value
+            if "missing_skills" not in st.session_state:
+                st.session_state.missing_skills = []
 
-                if missing_skills:
-                    st.subheader('Missing Skills')
-                    st.write(missing_skills)
-
-                if missing_skills is not None:
-                    st.subheader('Missing Skills')
-                    st.write(missing_skills)
-                    st.session_state.missing_skills = missing_skills
-                    st.session_state.show_go_to_feedback_button = True
-                else:
-                    st.session_state.missing_skills = []
-
-                if "show_go_to_feedback_button" in st.session_state and st.session_state.show_go_to_feedback_button:
-                    st.session_state.choice = "Feedback Page"
-                    st.session_state.clicked_feedback_button = True
-                    st.experimental_rerun()
-
-                elif not st.session_state.processed_resume or not st.session_state.processed_job_description:
-                    st.warning("Please upload both Resume and Job Description before using ATS")
-                       
+            if missing_skills is not None:
+                st.subheader('Missing Skills')
+                st.write(missing_skills)
+                st.session_state.missing_skills = missing_skills
+                st.session_state.show_go_to_feedback_button = True
+            else:
+                st.session_state.missing_skills = []
+            
+            if "show_go_to_feedback_button" in st.session_state and st.session_state.show_go_to_feedback_button:
+                st.session_state.choice = "Feedback Page"
+                st.session_state.clicked_feedback_button = True
+                st.experimental_rerun()
+            
+            elif not st.session_state.processed_resume or not st.session_state.processed_job_description:
+                st.warning("Please upload both Resume and Job Description before using ATS")
 
     if choice == "FeedBack Page":
         st.title('Feedback')
@@ -295,6 +290,7 @@ def main():
 
         # Automatically populate the message block with missing skills
         message = st.text_area("Message:", value=", ".join(missing_skills) if missing_skills else "")
+
 
         # Button to send email
         if st.button("Send Email"):
