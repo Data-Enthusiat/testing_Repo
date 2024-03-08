@@ -255,12 +255,18 @@ def main():
                 st.write(f"<h5><b><span style='color: #fd971f;'>{os.path.basename(resume_name)} is Not Recommended for {os.path.basename(jd_name)}</span></b></h5>", unsafe_allow_html=True)
                 st.write(f"<h5><b><span style='color: #fd971f;'>Score: {score}</span></b></h5>", unsafe_allow_html=True)
 
+                 
+
                 if 'clicked_feedback_button' not in st.session_state:
                     st.session_state.clicked_feedback_button = False
 
                 # Ensure missing_skills is present in st.session_state and set a default value
                 if "missing_skills" not in st.session_state:
                     st.session_state.missing_skills = []
+
+                if missing_skills:
+                    st.subheader('Missing Skills')
+                    st.write(missing_skills)
 
                 if missing_skills is not None:
                     st.subheader('Missing Skills')
