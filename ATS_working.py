@@ -24,7 +24,7 @@ Scoring = Matching()
 from PIL import Image
 
 # Display circular image with reduced size
-image_path = "ATS_logo.jpg"
+image_path = "circle_logo.jpg"
 st.set_page_config(page_icon=image_path, page_title="Applicant Tracking System")
 
 # Displaying Applicant Missing Skill on FeedBack Page
